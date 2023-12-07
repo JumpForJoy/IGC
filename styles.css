@@ -1,4 +1,6 @@
-* {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
   outline: 0;
   padding: 0;
@@ -14,7 +16,8 @@
 }
 
 .timeline button,
-.timeline .timeline_card {
+.timeline .timeline_card,
+.popup h2 {
   font-family: "Source Serif 4", serif;
 }
 
@@ -186,8 +189,13 @@
   z-index: 5;
 }
 
+.timeline .timeline_bar figure {
+  user-select: none;
+}
+
 .timeline .timeline_bar span {
   overflow: hidden;
+  pointer-events: none;
 }
 .timeline .timeline_bar span + span {
   padding-left: 120px;
@@ -207,29 +215,18 @@
   transform: translateY(-50%);
 }
 
-.timeline .timeline_follow {
-  background-color: transparent;
-  width: calc(100% + 43px);
-  height: 100%;
+.timeline .timeline_follow_wrapper {
+  width: 100%;
+  height: auto;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: -39px;
+  left: 0;
   z-index: 10;
-  transform: translate(-50%, -50%);
-  appearance: none;
 }
-
-.timeline .timeline_follow::-webkit-slider-thumb,
-.timeline .timeline_follow::-moz-range-thumb {
+.timeline .timeline_follow {
   width: 111px;
   height: 245px;
-  background-color: transparent;
-  background-image: url("./assets/magnifying-glass.svg");
-  background-position: center 67px;
-  background-repeat: no-repeat;
-  border: 0;
-  cursor: pointer;
-  appearance: none;
+  transform: translateX(-21px);
 }
 
 .timeline .timeline_cards {
@@ -250,17 +247,23 @@
   position: relative;
   z-index: 5;
 }
-.timeline .timeline_card:before {
+
+.timeline .timeline_card:before,
+.popup .popup_images figure:before {
   content: "";
   background-image: url("./assets/pin.png");
   width: 21px;
   height: 21px;
   position: absolute;
-  top: 5px;
   left: 50%;
   z-index: 5;
   transform: translateX(-50%);
 }
+
+.timeline .timeline_card:before {
+  top: 5px;
+}
+
 .timeline .timeline_card:nth-child(even) {
   margin-left: -40px;
 }
@@ -278,6 +281,7 @@
   line-height: 1.35;
   max-width: 161px;
   margin: 0 auto;
+  user-select: none;
 }
 
 .timeline .timeline_card--s {
@@ -301,4 +305,95 @@
 
 .cclockwise {
   transform: rotate(-7deg);
+}
+
+.popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 500 16px/1.56 "Roboto", sans-serif;
+  color: #58341a;
+  text-align: center;
+  background-color: rgba(77, 77, 77, 0.8);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 20;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+.popup.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup button {
+  background-color: transparent;
+  border: 0;
+  position: absolute;
+  top: 14px;
+  right: 17px;
+  z-index: 5;
+  cursor: pointer;
+}
+.popup h2 {
+  font-size: 26px;
+  line-height: 1.25;
+  letter-spacing: 0.1em;
+  max-width: 700px;
+  margin: 0 auto 20px;
+}
+.popup p {
+  margin-bottom: 20px;
+}
+
+.popup .popup_body {
+  background-image: url("./assets/card-bg-xl.png");
+  background-size: cover;
+  background-position: center top;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 25px;
+  max-width: 1182px;
+  height: 664px;
+  padding: 63px 27px 43px 85px;
+  position: relative;
+  z-index: 5;
+}
+
+.popup .popup_inner {
+  height: 100%;
+  padding: 20px 102px 20px 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-color: #6b4529cc #fff;
+  scrollbar-width: thin;
+}
+
+.popup .popup_images {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 44px;
+}
+.popup .popup_images figure {
+  border: 8px solid #fff;
+  position: relative;
+  z-index: 5;
+}
+.popup .popup_images figure:before {
+  top: -15px;
+}
+.popup .popup_images figure:nth-child(odd) {
+  transform: rotateZ(4deg);
+}
+.popup .popup_images figure:nth-child(even) {
+  transform: rotateZ(-4deg);
+  margin: 5px 0 0 -70px;
+}
+.popup .popup_images img {
+  display: block;
+  height: auto;
 }
