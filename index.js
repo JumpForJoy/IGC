@@ -1,4 +1,5 @@
 // Sliders logic
+const bgHolder = document.getElementById("bg");
 const slider = document.getElementById("slider");
 const scrollbar = document.getElementById("slider-scroll");
 const scrollbarWrapper = document.querySelector(".timeline_follow_wrapper");
@@ -18,6 +19,8 @@ let offsetInitial = 0;
 let cssOffset = 0;
 
 let move = 0;
+
+let bgImage = 1;
 
 window.addEventListener("load", () => {
   slider.style.marginLeft = `calc(50% - ${
@@ -55,6 +58,19 @@ const doMove = (event) => {
     slider.classList.add("no-click");
     slider.style.transform = `translateX(${move}%)`;
     scrollbarWrapper.style.transform = `translateX(${-move}%)`;
+  }
+
+  if (bgHolder && (doDragScrollbar || doDragSlider)) {
+    const absMove = Math.abs(move);
+    const imageId = absMove > (2 * 100) / 3 ? 3 : absMove < 100 / 3 ? 1 : 2;
+
+    if (bgImage !== imageId) {
+      bgImage = imageId;
+      document.querySelector("img.visible").classList.remove("visible");
+      document
+        .querySelector(`#bg img:nth-child(${bgImage})`)
+        .classList.add("visible");
+    }
   }
 };
 const endMove = () => {
