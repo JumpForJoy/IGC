@@ -349,6 +349,20 @@
 .popup p {
   margin-bottom: 20px;
 }
+.popup p:after {
+  content: "";
+  display: table;
+  line-height: 0;
+  clear: both;
+}
+.popup img {
+  height: auto;
+}
+
+.popup .popup_content img,
+.popup .popup_images figure {
+  border: 8px solid #fff;
+}
 
 .popup .popup_body {
   background-image: url("./assets/card-bg-xl.png");
@@ -379,7 +393,6 @@
   margin-bottom: 44px;
 }
 .popup .popup_images figure {
-  border: 8px solid #fff;
   position: relative;
   z-index: 5;
 }
@@ -395,5 +408,22 @@
 }
 .popup .popup_images img {
   display: block;
+}
+
+.popup .popup_content img {
+  margin-bottom: 15px;
+}
+.popup .popup_content img.left {
+  float: left;
+  margin-right: 15px;
+}
+.popup .popup_content img.right {
+  float: right;
+  margin-left: 15px;
+}
+.popup .popup_content img.center {
+  display: block;
   height: auto;
+  margin-right: auto;
+  margin-left: auto;
 }
