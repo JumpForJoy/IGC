@@ -113,7 +113,9 @@ popupTriggers.forEach((popupTrigger) => {
   });
 });
 
-const popupClose = document.querySelector(".popup_close");
-popupClose.addEventListener("click", () => {
-  document.querySelector(".popup.visible").classList.remove("visible");
+const popupCloseButtons = document.querySelectorAll(".popup_close");
+popupCloseButtons.forEach((popupCloseButton) => {
+  popupCloseButton.addEventListener("click", () => {
+    document.querySelector(".popup.visible").classList.remove("visible");
+  });
 });
