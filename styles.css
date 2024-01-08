@@ -381,7 +381,8 @@
 }
 
 .popup .popup_content img,
-.popup .popup_images figure {
+.popup .popup_images figure,
+.popup .popup_gallery a {
   border: 8px solid #fff;
 }
 
@@ -447,4 +448,20 @@
   height: auto;
   margin-right: auto;
   margin-left: auto;
+}
+.popup .popup_gallery {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.popup .popup_gallery a {
+  flex: 0 0 auto;
+  height: 200px;
+}
+.popup .popup_gallery img {
+  display: block;
+  width: auto;
+  height: 100%;
 }
