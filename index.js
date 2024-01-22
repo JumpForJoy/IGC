@@ -22,12 +22,14 @@ let move = 0;
 
 let bgImage = 1;
 
-window.addEventListener("load", () => {
-  slider.style.marginLeft = `calc(50% - ${
-    document.querySelector(".timeline_slider .timeline_slide:first-child")
-      .offsetWidth / 2
-  }px)`;
-});
+// Uncomment this and adjust if you want an initial offset of the slider
+
+// window.addEventListener("load", () => {
+//   slider.style.marginLeft = `calc(50% - ${
+//     document.querySelector(".timeline_slider .timeline_slide:first-child")
+//       .offsetWidth / 2
+//   }px)`;
+// });
 
 const startMove = (event) => {
   doDragScrollbar = true;
